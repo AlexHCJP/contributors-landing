@@ -86,7 +86,7 @@ export default function RepositoryPage({ params: { name } }: RepositoryPageProps
                         remarkPlugins={[remarkBreaks, remarkGfm]}
                         rehypePlugins={[rehypeSlug, rehypeRaw]}
                         components={{
-                            code({ inline, className, children, ...props}) {
+                            code({ inline, className, children, ...props}: { inline: boolean, className: string, children: string, props: never  }) {
                                 const match = /language-(\w+)/.exec(className || '');
                                 return !inline && match ? (
                                     <SyntaxHighlighter
