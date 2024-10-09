@@ -1,4 +1,4 @@
-import { use } from 'react';
+import {LegacyRef, use} from 'react';
 import { FaStar, FaCodeBranch, FaExclamationCircle } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -41,6 +41,7 @@ interface RepositoryPageProps {
 export default function RepositoryPage({ params: { name } }: RepositoryPageProps) {
     const repository = use(getRepository(name));
     const readme = use(getReadme(name));
+
 
     return (
         <div>
@@ -86,14 +87,13 @@ export default function RepositoryPage({ params: { name } }: RepositoryPageProps
                         remarkPlugins={[remarkBreaks, remarkGfm]}
                         rehypePlugins={[rehypeSlug, rehypeRaw]}
                         components={{
-                            code({ inline, className, children, ...props}: { inline: boolean, className: string, children: string, props: never  }) {
+                            code({ className, children, ...props}) {
                                 const match = /language-(\w+)/.exec(className || '');
-                                return !inline && match ? (
+                                return match ? (
                                     <SyntaxHighlighter
-
                                         language={match[1]}
                                         PreTag="div"
-                                        {...props}
+                                        ref={props.ref as LegacyRef<SyntaxHighlighter>}
                                     >
                                         {String(children).replace(/\n$/, '')}
                                     </SyntaxHighlighter>
