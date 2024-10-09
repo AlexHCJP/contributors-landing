@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse';
 import rehypeSlug from 'rehype-slug';
 import { visit } from 'unist-util-visit';
 import {generateIdFromTitle} from "@/utils/generateIdFromTitle";
+import {Text} from "mdast";
 
 interface Header {
     title: string;
@@ -35,7 +36,11 @@ export const TreeView = ({ markdown }: TreeViewProps) => {
             // Итерируем по дереву и извлекаем заголовки с id
             visit(parsed, 'heading', (node) => {
                 const level = node.depth; // уровень заголовка
-                const title = node.children.map((child: any) => child.value).join('');
+
+                const title = node.children
+                    .filter((child): child is Text => child.type === 'text')
+                    .map((child) => child.value)
+                    .join('');
                 const id = generateIdFromTitle(title);
                 foundHeaders.push({ title, level, id });
             });
