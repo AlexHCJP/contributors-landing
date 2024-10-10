@@ -1,0 +1,21 @@
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.active {
+    background-color: rgb(96, 165, 250);
+    color: #f0f0f0;
+}
+.disabled {
+    background-color: #f0f0f0;
+    color: #dddddd;
+    cursor: not-allowed;
+}

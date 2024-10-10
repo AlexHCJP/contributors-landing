@@ -6,4 +6,6 @@ export interface Repository {
     description: string;
     forks_count: number;
     open_issues_count: number;
+    topics: string[];
+    language: string;
 }

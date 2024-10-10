@@ -115,6 +115,7 @@ export default function RepositoryPage({ params: { name } }: RepositoryPageProps
                             li({children}) {
                                 return <li className="list-disc ml-4">{children}</li>;
                             },
+
                         }}
                     >
                         {readme}
