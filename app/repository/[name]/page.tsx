@@ -9,6 +9,8 @@ import { Repository } from '@/models/repository';
 import remarkBreaks from 'remark-breaks';
 import { TreeView } from '@/components/TreeView';
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {Metadata} from "next";
+import nlp from "compromise";
 
 async function getRepository(name: string) {
     const res = await fetch(`https://api.github.com/repos/contributors-company/${name}`);
@@ -32,10 +34,29 @@ async function getReadme(name: string) {
     return readme;
 }
 
+
 interface RepositoryPageProps {
     params: {
         name: string;
     };
+}
+
+
+function extractKeywords(description: string): string[] {
+    return nlp(description).nouns().out('array');
+}
+
+export async function generateMetadata(
+    { params: {name} }: RepositoryPageProps,
+): Promise<Metadata> {
+    const repository = await getRepository(name);
+    const ext = extractKeywords(repository.description);
+
+    return {
+        title: name,
+        description: repository.description,
+        keywords: `repository, github, contributors-company, open source, package, ${ext.join(', ')}`,
+    }
 }
 
 export default function RepositoryPage({ params: { name } }: RepositoryPageProps) {
