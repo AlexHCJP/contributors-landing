@@ -49,6 +49,7 @@ function extractKeywords(description: string): string[] {
 export async function generateMetadata(
     { params: {name} }: RepositoryPageProps,
 ): Promise<Metadata> {
+
     const repository = await getRepository(name);
     const ext = extractKeywords(repository.description);
 
