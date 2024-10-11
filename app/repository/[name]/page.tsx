@@ -82,7 +82,7 @@ export default function RepositoryPage({ params: { name } }: RepositoryPageProps
 
 
                 <div className="w-full lg:w-1/4 pr-4 space-y-4">
-                    <h1 className="text-2xl font-bold">{repository.name}</h1>
+                    <h1 className="text-2xl font-bold" translate="no">{repository.name}</h1>
                     <p className="text-base">{repository.description}</p>
                     <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">

@@ -1,5 +1,4 @@
 import React, { use } from 'react';
-import { FaBook, FaUsers, FaMapMarkerAlt, FaEnvelope, FaTwitter } from 'react-icons/fa';
 import 'react-multi-carousel/lib/styles.css';
 import { FormA } from "@/components/FormA";
 import {Organization} from "@/models/organization";
@@ -20,45 +19,25 @@ export default function Home() {
     return (
         <div className="min-h-screen flex flex-col items-center bg-gray-100">
             <div className="container mx-auto p-4 flex flex-col items-center">
-                <div className="bg-white p-6 rounded-lg shadow-md mb-6 w-full max-w-4xl">
-                    <div className="flex flex-col items-center">
-                        <img src={stats.avatar_url} alt="Organization Avatar" className="w-24 h-24 rounded-full mb-4" />
-                        <h1 className="text-3xl font-bold mb-2">{stats.name}</h1>
-                        <p className="text-center text-lg mb-4">{stats.description}</p>
-                        <div className="flex space-x-4 mb-4">
-                            {stats.location && (
-                                <div className="flex items-center space-x-2">
-                                    <FaMapMarkerAlt className="text-red-500" />
-                                    <span>{stats.location}</span>
-                                </div>
-                            )}
-                            {stats.email && (
-                                <div className="flex items-center space-x-2">
-                                    <FaEnvelope className="text-blue-500" />
-                                    <span>{stats.email}</span>
-                                </div>
-                            )}
-                            {stats.twitter_username && (
-                                <div className="flex items-center space-x-2">
-                                    <FaTwitter className="text-blue-400" />
-                                    <span>@{stats.twitter_username}</span>
-                                </div>
-                            )}
-                        </div>
-                        <div className="flex space-x-4">
-                            <div className="flex items-center space-x-2">
-                                <FaBook className="text-green-500" />
-                                <span>{stats.public_repos} Repositories</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <FaUsers className="text-purple-500" />
-                                <span>{stats.followers} Followers</span>
-                            </div>
-                        </div>
+                <div className=" max-w-4xl">
+                    <div className="text-3xl font-medium flex flex-col text-center gap-10">
+                        <span className="text-5xl font-bold">
+                            <span translate="no">✨Contributors✨</span><br/>
+                            ✨this is Open Source organization✨</span>
+                        <span>
+                            that is dedicated to developing and maintaining open source projects and packages aimed at assisting developers worldwide.🌸
+                        </span>
+                        <span className="font-bold">
+                            Our mission is to contribute to the community by creating high-quality, reliable, and
+                            innovative software solutions.🔥🌪
+                        </span>
+
                     </div>
+
                 </div>
+
             </div>
-            <FormA />
+            <FormA/>
         </div>
     );
 }

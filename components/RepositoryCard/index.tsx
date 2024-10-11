@@ -16,7 +16,7 @@ export function Index({ repo }: { repo: Repository }) {
         <div className={`${styles.card} w-full`} onClick={onClick}>
             <h2 className="text-lg font-semibold mb-2 flex gap-2">
                 <Icon name={repo.language} />
-                <span className="text-blue-400 ">
+                <span className="text-blue-400 " translate="no">
                     {repo.name}
                 </span>
             </h2>
