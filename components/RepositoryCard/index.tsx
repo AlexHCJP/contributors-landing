@@ -1,9 +1,10 @@
 'use client'
 
 import {useRouter} from "next/navigation";
-import {FaCodeBranch, FaExclamationCircle, FaStar} from "react-icons/fa";
+import {FaCodeBranch, FaExclamationCircle, FaStar } from "react-icons/fa";
 import {Repository} from "@/models/repository";
 import styles from "./styles.module.css";
+import {Icon} from "@/components/Icon";
 
 
 export function Index({ repo }: { repo: Repository }) {
@@ -13,7 +14,8 @@ export function Index({ repo }: { repo: Repository }) {
 
     return (
         <div className={`${styles.card} w-full`} onClick={onClick}>
-            <h2 className="text-lg font-semibold mb-2">
+            <h2 className="text-lg font-semibold mb-2 flex gap-2">
+                <Icon name={repo.language} />
                 <span className="text-blue-400 ">
                     {repo.name}
                 </span>

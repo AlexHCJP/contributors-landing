@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { FaTelegram, FaPatreon, FaEnvelope } from 'react-icons/fa';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,17 +20,30 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
+                                     children,
+                                   }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+      <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
-        {children}
+      {children}
+      <footer className="bg-gray-800 text-white p-4 mt-8">
+        <div className="container mx-auto flex justify-center space-x-4">
+          <a href="https://t.me/devKaban" target="_blank" rel="noopener noreferrer">
+            <FaTelegram size={24} />
+          </a>
+          <a href="https://www.patreon.com/Contributors" target="_blank" rel="noopener noreferrer">
+            <FaPatreon size={24} />
+          </a>
+          <a href="mailto:alexganbert@gmail.com">
+            <FaEnvelope size={24} />
+          </a>
+        </div>
+      </footer>
       </body>
-    </html>
+      </html>
   );
 }
