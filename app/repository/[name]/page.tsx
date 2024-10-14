@@ -12,6 +12,8 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import {Metadata} from "next";
 import nlp from "compromise";
 
+export const revalidate = 3600 // revalidate the data at most every hour
+
 async function getRepository(name: string) {
     const res = await fetch(`https://api.github.com/repos/contributors-company/${name}`);
     if (!res.ok) {
