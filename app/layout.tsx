@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { FaTelegram, FaPatreon, FaEnvelope } from 'react-icons/fa';
+import {Metrika} from "@/components/Metrika";
+import {Suspense} from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +28,13 @@ export default function RootLayout({
 }>) {
   return (
       <html lang="en">
+
       <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
       >
+      <Suspense>
+          <Metrika />
+      </Suspense>
       {children}
       <footer className="bg-gray-800 text-white p-4 mt-8">
         <div className="container mx-auto flex justify-center space-x-4">
